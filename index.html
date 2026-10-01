@@ -1,0 +1,934 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Queen Nia's Sailying Crab Legs</title>
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    font-family:Arial, Helvetica, sans-serif;
+    background:#fff8ee;
+    color:#222;
+}
+
+/* =================================
+   QUEEN NIA INTRO SCREEN
+================================= */
+
+#intro{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    height:100vh;
+
+    background:
+    radial-gradient(circle at center,
+    #ffd36b,
+    #ff8f3c,
+    #5c160d);
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+
+    z-index:9999;
+    transition:1s;
+}
+
+.intro-content{
+    padding:25px;
+}
+
+.intro-content h1{
+    font-family:Georgia,serif;
+    font-size:clamp(45px,9vw,90px);
+    color:white;
+    text-shadow:
+    0 0 15px #ffb700,
+    4px 4px 8px black;
+}
+
+.intro-content h2{
+    color:#fff5d8;
+    font-size:25px;
+    margin:10px 0 25px;
+}
+
+.queen-photo{
+    width:min(330px,75vw);
+    height:330px;
+    object-fit:cover;
+
+    border-radius:50%;
+
+    border:7px solid #ffd700;
+
+    box-shadow:
+    0 0 20px #ffd700,
+    0 0 60px rgba(255,215,0,.7);
+
+    cursor:pointer;
+
+    animation:pulse 1.7s infinite;
+}
+
+@keyframes pulse{
+
+    0%{
+        transform:scale(1);
+    }
+
+    50%{
+        transform:scale(1.06);
+    }
+
+    100%{
+        transform:scale(1);
+    }
+
+}
+
+.click-text{
+    margin-top:25px;
+    font-size:20px;
+    font-weight:bold;
+    color:white;
+    animation:blink 1.2s infinite;
+}
+
+@keyframes blink{
+
+    50%{
+        opacity:.4;
+    }
+
+}
+
+/* =================================
+   NAVIGATION
+================================= */
+
+nav{
+
+    background:#111;
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+
+    padding:18px 7%;
+
+    position:sticky;
+    top:0;
+
+    z-index:1000;
+}
+
+.logo{
+
+    color:#ffc62c;
+
+    font-family:Georgia,serif;
+
+    font-size:24px;
+
+    font-weight:bold;
+}
+
+nav ul{
+
+    display:flex;
+
+    list-style:none;
+
+    gap:25px;
+}
+
+nav a{
+
+    text-decoration:none;
+
+    color:white;
+
+    font-weight:bold;
+}
+
+nav a:hover{
+
+    color:#ffc62c;
+}
+
+/* =================================
+   HERO
+================================= */
+
+.hero{
+
+    min-height:90vh;
+
+    background:
+    linear-gradient(
+        rgba(0,0,0,.55),
+        rgba(0,0,0,.65)
+    ),
+    url("queennia.jpg")
+    center/cover no-repeat;
+
+    display:flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-align:center;
+
+    padding:50px 20px;
+
+    color:white;
+}
+
+.hero-content{
+
+    max-width:900px;
+}
+
+.crown{
+
+    font-size:70px;
+}
+
+.hero h1{
+
+    font-family:Georgia,serif;
+
+    font-size:clamp(48px,9vw,95px);
+
+    color:#ffd700;
+
+    text-shadow:
+    3px 3px 8px black;
+}
+
+.hero h2{
+
+    font-size:clamp(25px,5vw,45px);
+
+    margin:15px 0;
+}
+
+.hero p{
+
+    font-size:19px;
+
+    line-height:1.7;
+
+    max-width:700px;
+
+    margin:20px auto 30px;
+}
+
+.btn{
+
+    display:inline-block;
+
+    padding:16px 32px;
+
+    background:#ffd700;
+
+    color:#301400;
+
+    border-radius:40px;
+
+    text-decoration:none;
+
+    font-size:19px;
+
+    font-weight:bold;
+
+    transition:.3s;
+}
+
+.btn:hover{
+
+    background:white;
+
+    transform:scale(1.08);
+}
+
+/* =================================
+   QUEEN NIA SECTION
+================================= */
+
+.queen-section{
+
+    background:
+    linear-gradient(
+        135deg,
+        #571e12,
+        #ac481d
+    );
+
+    color:white;
+
+    text-align:center;
+
+    padding:80px 20px;
+}
+
+.queen-section img{
+
+    width:min(400px,85vw);
+
+    border-radius:25px;
+
+    border:6px solid #ffd700;
+
+    box-shadow:
+    0 15px 35px rgba(0,0,0,.5);
+}
+
+.queen-section h2{
+
+    margin-top:25px;
+
+    font-family:Georgia,serif;
+
+    font-size:48px;
+
+    color:#ffd700;
+}
+
+.queen-section p{
+
+    max-width:650px;
+
+    margin:15px auto;
+
+    line-height:1.7;
+
+    font-size:18px;
+}
+
+/* =================================
+   MENU
+================================= */
+
+.menu{
+
+    padding:80px 8%;
+
+    background:#fff7e7;
+}
+
+.section-title{
+
+    text-align:center;
+
+    font-family:Georgia,serif;
+
+    color:#9b2d16;
+
+    font-size:45px;
+
+    margin-bottom:15px;
+}
+
+.section-text{
+
+    text-align:center;
+
+    max-width:700px;
+
+    margin:0 auto 45px;
+
+    font-size:18px;
+
+    line-height:1.6;
+}
+
+.menu-grid{
+
+    max-width:1100px;
+
+    margin:auto;
+
+    display:grid;
+
+    grid-template-columns:
+    repeat(auto-fit,minmax(230px,1fr));
+
+    gap:25px;
+}
+
+.menu-card{
+
+    background:white;
+
+    padding:30px 20px;
+
+    border-radius:20px;
+
+    text-align:center;
+
+    box-shadow:
+    0 8px 25px rgba(0,0,0,.13);
+
+    transition:.3s;
+
+    border-bottom:5px solid #ff8b29;
+}
+
+.menu-card:hover{
+
+    transform:translateY(-8px);
+}
+
+.food-icon{
+
+    font-size:55px;
+}
+
+.menu-card h3{
+
+    color:#a52a16;
+
+    margin:15px 0 10px;
+
+    font-size:25px;
+}
+
+.menu-card p{
+
+    line-height:1.5;
+
+    color:#555;
+}
+
+.price{
+
+    display:block;
+
+    margin-top:17px;
+
+    font-size:25px;
+
+    font-weight:bold;
+
+    color:#e05e19;
+}
+
+/* =================================
+   SPECIAL
+================================= */
+
+.special{
+
+    background:
+    linear-gradient(
+        135deg,
+        #ff8f24,
+        #aa2814
+    );
+
+    color:white;
+
+    padding:80px 20px;
+
+    text-align:center;
+}
+
+.special h2{
+
+    font-size:45px;
+
+    margin-bottom:20px;
+}
+
+.special p{
+
+    max-width:700px;
+
+    margin:auto;
+
+    font-size:20px;
+
+    line-height:1.7;
+}
+
+/* =================================
+   ORDER
+================================= */
+
+.order{
+
+    text-align:center;
+
+    padding:80px 20px;
+
+    background:#111;
+
+    color:white;
+}
+
+.order h2{
+
+    font-size:45px;
+
+    color:#ffd700;
+
+    margin-bottom:20px;
+}
+
+.order p{
+
+    font-size:19px;
+
+    margin-bottom:30px;
+}
+
+/* =================================
+   FOOTER
+================================= */
+
+footer{
+
+    background:#060606;
+
+    text-align:center;
+
+    padding:30px;
+
+    color:#bbb;
+}
+
+footer strong{
+
+    color:#ffd700;
+}
+
+/* MUSIC PLAYER - HIDDEN */
+
+#musicPlayer{
+
+    position:absolute;
+
+    width:1px;
+
+    height:1px;
+
+    opacity:0;
+
+    pointer-events:none;
+}
+
+/* =================================
+   MOBILE
+================================= */
+
+@media(max-width:700px){
+
+    nav{
+
+        flex-direction:column;
+
+        gap:12px;
+    }
+
+    nav ul{
+
+        gap:13px;
+
+        flex-wrap:wrap;
+
+        justify-content:center;
+    }
+
+    .queen-photo{
+
+        height:270px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- =================================
+     CLICK QUEEN NIA TO ENTER
+================================= -->
+
+<div id="intro">
+
+    <div class="intro-content">
+
+        <h1>👑 Queen Nia 👑</h1>
+
+        <h2>Sailying Crab Legs</h2>
+
+        <img
+        src="queennia.jpg"
+        class="queen-photo"
+        onclick="enterWebsite()"
+        alt="Queen Nia">
+
+        <div class="click-text">
+
+            👑 CLICK QUEEN NIA TO ENTER & PLAY MUSIC 🎵
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- YOUTUBE MUSIC -->
+
+<iframe
+    id="musicPlayer"
+    src=""
+    allow="autoplay; encrypted-media"
+    allowfullscreen>
+</iframe>
+
+
+<!-- =================================
+     NAVIGATION
+================================= -->
+
+<nav>
+
+    <div class="logo">
+        👑 Queen Nia's Crab Legs
+    </div>
+
+    <ul>
+
+        <li>
+            <a href="#home">Home</a>
+        </li>
+
+        <li>
+            <a href="#queen">Queen Nia</a>
+        </li>
+
+        <li>
+            <a href="#menu">Menu</a>
+        </li>
+
+        <li>
+            <a href="#order">Order</a>
+        </li>
+
+    </ul>
+
+</nav>
+
+
+<!-- =================================
+     HERO
+================================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="crown">
+            👑
+        </div>
+
+        <h1>
+            Queen Nia
+        </h1>
+
+        <h2>
+            Sailying Crab Legs 🦀
+        </h2>
+
+        <p>
+
+            Welcome to Queen Nia's Sailying Crab Legs —
+            seafood made with flavor, style and a royal touch.
+
+        </p>
+
+        <a href="#menu" class="btn">
+            View The Menu
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     QUEEN NIA
+================================= -->
+
+<section
+class="queen-section"
+id="queen">
+
+    <img
+    src="queennia.jpg"
+    alt="Queen Nia">
+
+    <h2>
+        👑 Queen Nia
+    </h2>
+
+    <p>
+
+        Welcome to the home of Queen Nia's Sailying Crab Legs.
+        Great seafood, bold flavor and a royal experience.
+
+    </p>
+
+</section>
+
+
+<!-- =================================
+     MENU
+================================= -->
+
+<section
+class="menu"
+id="menu">
+
+    <h2 class="section-title">
+        🦀 The Royal Seafood Menu
+    </h2>
+
+    <p class="section-text">
+
+        Pick your favorite seafood meal and enjoy the
+        Queen Nia experience.
+
+    </p>
+
+
+    <div class="menu-grid">
+
+
+        <div class="menu-card">
+
+            <div class="food-icon">
+                🦀
+            </div>
+
+            <h3>
+                Crab Leg Platter
+            </h3>
+
+            <p>
+
+                Juicy crab legs served hot with
+                butter and our signature seasoning.
+
+            </p>
+
+            <span class="price">
+                $24.99
+            </span>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="food-icon">
+                🦐
+            </div>
+
+            <h3>
+                Shrimp Platter
+            </h3>
+
+            <p>
+
+                Seasoned shrimp served with
+                corn, potatoes and butter.
+
+            </p>
+
+            <span class="price">
+                $18.99
+            </span>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="food-icon">
+                🦀🦐
+            </div>
+
+            <h3>
+                Queen Nia Combo
+            </h3>
+
+            <p>
+
+                Crab legs and shrimp together
+                in one royal seafood platter.
+
+            </p>
+
+            <span class="price">
+                $32.99
+            </span>
+
+        </div>
+
+
+        <div class="menu-card">
+
+            <div class="food-icon">
+                🌽🥔
+            </div>
+
+            <h3>
+                Seafood Sides
+            </h3>
+
+            <p>
+
+                Corn, potatoes, eggs and
+                extra garlic butter.
+
+            </p>
+
+            <span class="price">
+                $8.99
+            </span>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- =================================
+     SPECIAL
+================================= -->
+
+<section class="special">
+
+    <h2>
+        👑 Queen Nia Special 👑
+    </h2>
+
+    <p>
+
+        Crab legs, shrimp, corn, potatoes,
+        eggs and buttery seafood seasoning
+        served together for the full royal experience.
+
+    </p>
+
+</section>
+
+
+<!-- =================================
+     ORDER
+================================= -->
+
+<section
+class="order"
+id="order">
+
+    <h2>
+        🦀 Ready To Eat?
+    </h2>
+
+    <p>
+        Order your Queen Nia seafood meal today.
+    </p>
+
+    <a
+    href="#"
+    class="btn">
+        ORDER NOW
+    </a>
+
+</section>
+
+
+<footer>
+
+    <p>
+
+        👑 <strong>Queen Nia's Sailying Crab Legs</strong> 🦀
+
+    </p>
+
+    <p style="margin-top:8px;">
+
+        Good Food • Good Music • Royal Flavor
+
+    </p>
+
+</footer>
+
+
+<script>
+
+/* =================================
+   CLICK QUEEN NIA
+   START SONG + OPEN WEBSITE
+================================= */
+
+function enterWebsite(){
+
+    const intro =
+    document.getElementById("intro");
+
+    const player =
+    document.getElementById("musicPlayer");
+
+
+    /* YOUR SONG */
+
+    player.src =
+    "https://www.youtube.com/embed/dc89yyOS0Z8?autoplay=1&loop=1&playlist=dc89yyOS0Z8";
+
+
+    /* FADE INTRO */
+
+    intro.style.opacity = "0";
+
+
+    setTimeout(function(){
+
+        intro.style.display = "none";
+
+    },1000);
+
+}
+
+</script>
+
+
+</body>
+</html>
